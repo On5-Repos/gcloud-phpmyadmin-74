@@ -1,0 +1,31 @@
+service: phpmyadmin
+runtime: php74
+
+entrypoint: serve public.php
+
+handlers:
+
+  # phpMyAdmin static files
+  - url: /robots.txt
+    static_files: robots.txt
+    upload: robots.txt
+
+  - url: /favicon.ico
+    static_files: favicon.ico
+    upload: favicon.ico
+
+  - url: /print.css
+    static_files: print.css
+    upload: print.css
+
+  # phpMyAdmin themes
+  - url: /themes
+    static_dir: themes
+
+  # phpMyAdmin js files built at release time
+  - url: /js/dist
+    static_dir: js/dist
+
+  # phpMyAdmin js vendor files
+  - url: /js/vendor
+    static_dir: js/vendor
